@@ -4,7 +4,7 @@ import {
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useEffect, useId, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import { useGame } from '../app/providers/GameContext';
 import { SoundToggle } from '../components/common/SoundToggle';
@@ -87,6 +87,12 @@ export function ResultPage() {
     return () => window.clearTimeout(timer);
   }, [allowMotion, perfect, strongRun]);
 
+  // A refreshed or cleared results route has no session to display.
+  // Redirect instead of leaving the player on an empty page.
+  if (!hasResult) {
+    return <Navigate to="/" replace />;
+  }
+
   const replay = () => {
     if (actionStarted.current) return;
     actionStarted.current = true;
@@ -110,9 +116,11 @@ export function ResultPage() {
     if (actionStarted.current) return;
     actionStarted.current = true;
     playSound('click', state.soundEnabled);
+
+    // Reset and navigate in the same event. Delaying resetSession can clear
+    // the result while this route is still mounted and cause a blank screen.
+    resetSession();
     navigate('/', { replace: true });
-    // Preserve the existing route-first reset behavior.
-    window.setTimeout(resetSession, 0);
   };
 
   const reveal = (delay = 0) => ({

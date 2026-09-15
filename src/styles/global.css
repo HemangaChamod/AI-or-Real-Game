@@ -337,3 +337,105 @@ figure, h1, h2, p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   .home-page .primary-button--hero::before { display: none; }
 }
+
+/* Mobile and tablet refinement */
+@media (max-width: 1024px) {
+  .page-content {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+@media (max-width: 720px) {
+  html,
+  body {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .game-page {
+    overflow-anchor: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .player-page .page-content,
+  .game-page .page-content {
+    padding-right: 0.875rem;
+    padding-left: 0.875rem;
+  }
+
+  .player-page .compact-header {
+    min-height: 44px;
+  }
+
+  .player-layout--centered {
+    min-height: calc(100svh - 76px);
+    gap: 1.25rem;
+    padding: 2rem 0 1rem;
+  }
+
+  .player-heading h1 {
+    margin-top: 0.65rem;
+    font-size: clamp(2.35rem, 13vw, 3.5rem);
+    line-height: 0.98;
+  }
+
+  .player-heading > p {
+    font-size: 0.9rem;
+    line-height: 1.45;
+  }
+
+  .player-card--centered {
+    padding: 2.5rem 1.1rem 1.1rem;
+    border-radius: 22px;
+  }
+
+  .player-card--centered label {
+    font-size: 1.15rem;
+  }
+
+  .player-card--centered > p:not(.form-error):not(.form-hint) {
+    margin-bottom: 0.85rem;
+  }
+
+  .player-card--centered .input-shell {
+    min-height: 56px;
+  }
+
+  .player-card--centered .form-hint,
+  .player-card--centered .form-error {
+    margin: 0.45rem 0 0.85rem;
+  }
+
+  .player-card__actions {
+    gap: 0.55rem;
+  }
+
+  .player-card__actions button {
+    min-height: 50px;
+  }
+
+  .game-page .game-stage {
+    gap: 0.65rem;
+    padding-top: 0.65rem;
+  }
+
+  .game-page .game-image {
+    height: min(34svh, 360px);
+    border-radius: 16px;
+  }
+
+  .game-page .answer-zone > p {
+    margin-bottom: 0.35rem;
+  }
+
+  .game-page .answer-buttons {
+    gap: 0.5rem;
+  }
+
+  .game-page .answer-button {
+    min-height: 72px;
+    padding: 0.75rem;
+  }
+}
