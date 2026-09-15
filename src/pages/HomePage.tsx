@@ -58,7 +58,7 @@ export function HomePage() {
 
         <motion.section className="rc-arena" aria-label="Start the Real or AI challenge" {...reveal(0.12)}>
           <div className="rc-arena-grid" aria-hidden="true" />
-          <span className="rc-axis-label rc-axis-label--left" aria-hidden="true">OBSERVE / QUESTION / DECIDE</span>
+          <span className="rc-axis-label rc-axis-label--left" aria-hidden="true">OBSERVE / DECIDE</span>
           <span className="rc-axis-label rc-axis-label--right" aria-hidden="true">HUMAN INTUITION REQUIRED</span>
 
           <div className="rc-choice rc-choice--real" aria-hidden="true">
@@ -366,6 +366,36 @@ const homeStyles = String.raw`
   .rc-home .rc-fact h2 { font-size: 12px; }
   .rc-home .rc-fact p { font-size: 10px; }
   .rc-home .rc-footer { flex-direction: column; gap: 8px; }
+}
+/* Readable supporting text at every viewport size. */
+.rc-home .rc-hub-link,
+.rc-home .rc-event { font-size: 12px; }
+.rc-home .rc-eyebrow { font-size: 11px; }
+.rc-home .rc-axis-label { font-size: 10px; }
+.rc-home .rc-choice-top > span { font-size: 10px; }
+.rc-home .rc-choice-bottom > div > span { font-size: 10px; }
+.rc-home .rc-launch-kicker { font-size: 10px; }
+.rc-home .rc-launch-action { font-size: 13px; }
+.rc-home .rc-launch-caption { font-size: 10px; }
+.rc-home .rc-best { font-size: 13px; }
+.rc-home .rc-fact p { font-size: 12px; }
+.rc-home .rc-fact-index { font-size: 10px; }
+.rc-home .rc-how { font-size: 12px; }
+.rc-home .rc-footer,
+.rc-home .rc-footer > span:last-child { font-size: 11px; }
+@media (max-width: 760px) {
+  .rc-home .rc-brand { font-size: 12px; }
+  .rc-home .rc-choice-top > span { font-size: 10px; }
+  .rc-home .rc-choice-bottom > div > span { font-size: 10px; }
+  .rc-home .rc-launch-kicker { font-size: 10px; }
+  .rc-home .rc-fact h2 { font-size: 13px; }
+}
+@media (max-width: 600px) {
+  .rc-home .rc-eyebrow { font-size: 10px; }
+  .rc-home .rc-choice-top > span { font-size: 10px; }
+  .rc-home .rc-how { font-size: 11px; }
+  .rc-home .rc-footer,
+  .rc-home .rc-footer > span:last-child { font-size: 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .rc-home *, .rc-home *::before, .rc-home *::after { animation: none !important; transition: none !important; }

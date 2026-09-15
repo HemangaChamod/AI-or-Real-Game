@@ -404,6 +404,38 @@ const resultStyles = String.raw`
   .rr-page .rr-actions button { width: 100%; }
   .rr-page .rr-footer { flex-direction: column; gap: 8px; }
 }
+/* Readable supporting text at every viewport size. */
+.rr-page .rr-session { font-size: 11px; }
+.rr-page .rr-eyebrow { font-size: 10px; }
+.rr-page .rr-panel-label { font-size: 10px; }
+.rr-page .rr-score-caption { font-size: 9px; }
+.rr-page .rr-accuracy { font-size: 12px; }
+.rr-page .rr-score-note { font-size: 12px; }
+.rr-page .rr-small-label { font-size: 10px; }
+.rr-page .rr-achievement p { font-size: 12px; }
+.rr-page .rr-breakdown-title,
+.rr-page .rr-breakdown-title > span:last-child { font-size: 10px; }
+.rr-page .rr-stat dt { font-size: 11px; }
+.rr-page .rr-best > div > span { font-size: 12px; }
+.rr-page .rr-best small { font-size: 11px; }
+.rr-page .rr-best > strong > span { font-size: 12px; }
+.rr-page .rr-next-copy p { font-size: 12px; }
+.rr-page .rr-primary,
+.rr-page .rr-secondary { font-size: 13px; }
+.rr-page .rr-signoff { font-size: 11px; }
+.rr-page .rr-footer,
+.rr-page .rr-footer > span:last-child { font-size: 11px; }
+@media (max-width: 640px) {
+  .rr-page .rr-brand { font-size: 12px; }
+  .rr-page .rr-player,
+  .rr-page .rr-message { font-size: 13px; }
+  .rr-page .rr-panel-label { font-size: 10px; }
+  .rr-page .rr-score-caption { font-size: 10px; }
+  .rr-page .rr-accuracy { font-size: 11px; }
+  .rr-page .rr-signoff,
+  .rr-page .rr-footer,
+  .rr-page .rr-footer > span:last-child { font-size: 10px; }
+}
 @media (prefers-reduced-motion: reduce) {
   .rr-page *, .rr-page *::before, .rr-page *::after { animation: none !important; transition: none !important; }
 }
