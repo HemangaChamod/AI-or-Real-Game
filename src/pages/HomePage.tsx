@@ -1,10 +1,12 @@
-import { ArrowRight, Camera, Clock3, Cpu, Focus, Layers3, ScanEye, Sparkles, Trophy } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Camera, Clock3, Cpu, Focus, Layers3, ScanEye, Sparkles, Trophy } from 'lucide-react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Link, useNavigate } from 'react-router-dom';
 import { useGame } from '../app/providers/GameContext';
 import { SoundToggle } from '../components/common/SoundToggle';
 import { gameConfig } from '../config/gameConfig';
 import { playSound } from '../services/audio/gameAudio';
+
+const GAME_HUB_URL = 'https://ai-playground-open-day-2026.vercel.app';
 
 /** Complete replacement: styles are scoped to this page; no extra assets needed. */
 export function HomePage() {
@@ -35,7 +37,14 @@ export function HomePage() {
           <span>REALITY<span className="rc-brand-slash">//</span>CHECK</span>
         </Link>
         <div className="rc-header-right">
-          <span className="rc-event"><span /> OPEN DAY 2026</span>
+          <a
+            className="rc-hub-link"
+            href={GAME_HUB_URL}
+            aria-label="Back to all games"
+          >
+            <ArrowLeft size={15} strokeWidth={1.8} />
+            <span>All Games</span>
+          </a>
           <div className="rc-sound"><SoundToggle /></div>
         </div>
       </header>
@@ -186,6 +195,16 @@ const homeStyles = String.raw`
 .rc-home .rc-brand-icon { color: var(--rc-cyan); display: grid; place-items: center; width: 38px; height: 38px; border: 1px solid #6bcfe22e; border-radius: 11px; background: #14253466; }
 .rc-home .rc-brand-slash { color: var(--rc-cyan); margin: 0 2px; }
 .rc-home .rc-header-right { display: flex; align-items: center; gap: 26px; }
+.rc-home .rc-hub-link {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 40px; padding: 9px 14px; border: 1px solid #8ca9d62b;
+  border-radius: 11px; background: linear-gradient(135deg, #14233a9c, #11172b9c);
+  color: #becce2; font-size: 10px; font-weight: 600; letter-spacing: .35px;
+  box-shadow: inset 0 1px #ffffff08; transition: color .2s, border-color .2s, background .2s, transform .2s;
+}
+.rc-home .rc-hub-link svg { color: var(--rc-cyan); transition: transform .2s; }
+.rc-home .rc-hub-link:hover { color: #f2f6ff; border-color: #74dbe852; background: linear-gradient(135deg, #193148b0, #171b36b0); transform: translateY(-1px); }
+.rc-home .rc-hub-link:hover svg { transform: translateX(-2px); }
 .rc-home .rc-event { display: inline-flex; align-items: center; gap: 8px; color: #a9b6cb; font: 10px ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: 1.5px; }
 .rc-home .rc-event > span, .rc-home .rc-launch-caption > span { width: 5px; height: 5px; border-radius: 50%; background: #66e5cb; box-shadow: 0 0 10px #66e5cb60; }
 .rc-home .rc-sound { display: flex; align-items: center; }
@@ -289,6 +308,7 @@ const homeStyles = String.raw`
   .rc-home .rc-header { width: calc(100% - 36px); min-height: 76px; }
   .rc-home .rc-header-right { gap: 12px; }
   .rc-home .rc-event { display: none; }
+  .rc-home .rc-hub-link { min-height: 36px; padding: 8px 10px; }
   .rc-home .rc-brand { font-size: 11px; letter-spacing: 1px; gap: 9px; }
   .rc-home .rc-brand-icon { width: 34px; height: 34px; }
   .rc-home .rc-main { padding: 35px 20px 28px; }
@@ -317,6 +337,8 @@ const homeStyles = String.raw`
   .rc-home .rc-footer { width: calc(100% - 36px); font-size: 8px; }
 }
 @media (max-width: 600px) {
+  .rc-home .rc-hub-link { width: 36px; padding: 8px; }
+  .rc-home .rc-hub-link > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .rc-home .rc-mobile-break { display: block; }
   .rc-home .rc-eyebrow { font-size: 8px; letter-spacing: 1.4px; }
   .rc-home .rc-arena { min-height: 318px; margin-top: 14px; }
